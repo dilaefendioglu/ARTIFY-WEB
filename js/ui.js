@@ -2,6 +2,8 @@
 import { register, login } from "./auth.js";
 import { auth } from "./firebase.js";
 import { updateProfile } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+import { fetchImages } from "./api.js";
+import { renderImages } from "./render.js";
 
 // REGISTER BUTONU
 const registerBtn = document.getElementById("registerBtn");
@@ -37,7 +39,7 @@ if (loginBtn) {
     login(email, password)
       .then(() => {
         alert("Giriş başarılı!");
-        window.location.href = "index.html"; // başarılı giriş sonrası ana sayfa
+        window.location.href = "dashboard.html"; // başarılı giriş sonrası ana sayfa
       })
       .catch((err) => {
         if (err.code === "auth/invalid-credential") {
@@ -46,5 +48,19 @@ if (loginBtn) {
           alert(err.message);
         }
       });
+  });
+}
+
+//SEARCH BUTONU
+const searchBtn = document.getElementById("searchBtn");
+const searchInput = document.getElementById("searchInput");
+
+if (searchBtn) {
+  searchBtn.addEventListener("click", async () => {
+    const query = searchInput.value.trim(); //trim kullanıcının yazmis oldugu sorgunun bastaki ve sondaki bosluklarini siler.
+    if (!query) return alert("Enter image description");
+    
+    const images = await fetchImages(query); 
+    renderImages(images);
   });
 }
