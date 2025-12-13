@@ -1,1 +1,56 @@
+/* ÜST SATIR */
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+}
+
+/* LOGO */
+.logo {
+  height: 60px;
+  width: 60px;
+}
+
+/* SEARCH – ORTAYI DOLDURSUN */
+.search-input {
+  height: 45px;
+  flex: 1;                 /* 🔥 ORTAYI KAPLAR */
+  max-width: 85vw;
+  border-radius: 512px;
+  padding: 0 20px;
+  background-color: white;
+}
+
+/* LOGOUT – EN SAĞ */
+.logoutBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;       /* 🔥 SAĞA YASLAR */
+}
+
+.logout-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* MASONRY ORTALI */
+.masonry {
+  column-count: 4; /*sayfayi 4 sutuna bolduk*/
+  column-gap: 15px;
+  padding: 20px;
+}
+
+.masonry img {
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  break-inside: avoid;
+  transition: transform 0.3s ease;
+}
+
+.masonry img:hover {
+  transform: scale(1.03);
+}
 

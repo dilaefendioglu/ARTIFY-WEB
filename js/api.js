@@ -2,7 +2,8 @@
   export async function fetchImages(query) { 
 
   const apiKey = "53672880-c40ce9e903a2e7bd62c0b5478";
-  const url = `https://pixabay.com/api/?key=${apiKey}&q=${encodeURIComponent(query)}&image_type=photo`;
+const url = `https://pixabay.com/api/?key=${apiKey}&q=${encodeURIComponent(query)}&image_type=photo&per_page=100`;
+
 
   try {
     const response = await fetch(url);
@@ -19,3 +20,5 @@
     return []; //bos döndürüyoruz
   }
 }
+
+

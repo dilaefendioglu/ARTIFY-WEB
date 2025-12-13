@@ -4,6 +4,8 @@ import { auth } from "./firebase.js";
 import { updateProfile } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 import { fetchImages } from "./api.js";
 import { renderImages } from "./render.js";
+import { signOut } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+
 
 // REGISTER BUTONU
 const registerBtn = document.getElementById("registerBtn");
@@ -52,15 +54,27 @@ if (loginBtn) {
 }
 
 //SEARCH BUTONU
-const searchBtn = document.getElementById("searchBtn");
 const searchInput = document.getElementById("searchInput");
 
-if (searchBtn) {
-  searchBtn.addEventListener("click", async () => {
-    const query = searchInput.value.trim(); //trim kullanıcının yazmis oldugu sorgunun bastaki ve sondaki bosluklarini siler.
-    if (!query) return alert("Enter image description");
-    
-    const images = await fetchImages(query); 
+searchInput.addEventListener("keydown", async (event) => {
+  if (event.key === "Enter") {
+    const query = searchInput.value.trim();
+    if (!query) return;
+  
+    const images = await fetchImages(query);
     renderImages(images);
-  });
-}
+  }
+});
+
+//çıkış butonu
+const logoutBtn = document.getElementById("logoutBtn");
+
+logoutBtn.addEventListener("click", () => {
+  signOut(auth)
+    .then(() => {
+      window.location.href = "../login.html";
+    })
+    .catch((error) => {
+      console.error("Logout error:", error);
+    });
+});

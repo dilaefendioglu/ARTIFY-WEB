@@ -5,7 +5,7 @@ export function renderImages(images) {  // dışarıdan gelen görsel listesini 
  images.forEach((img) => {   // Her bir görsel için tek tek dönüyoruz
 
    const imageElement = document.createElement("img");
-   imageElement.src = img.previewURL; // resmi göster
+  imageElement.src = img.webformatURL; // resmi göster
    imageElement.alt = img.tags;       // resmin açıklaması
    container.appendChild(imageElement); //Oluşturduğu <img>’yi HTML’e ekler → EKRANDA GÖRÜNÜR.
 
