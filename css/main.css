@@ -1,63 +1,159 @@
+/* =====================
+   RESET
+===================== */
+* {
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;          
-    display: flex;
-    justify-content: center; 
-    align-items: center;     
-    font-family: "Poppins", sans-serif;
-    background-color: #dac2d1; 
-    
+  margin: 0;
+  min-height: 100vh;
+  background: white;
+  font-family: Arial, sans-serif;
+  color: #fff;
 }
 
+/* =====================
+   ANA CONTAINER
+===================== */
 .container {
-    text-align: center;
+  display: flex;
+  height: 100vh;
+  width: 100%;
 }
 
-.title {
-    display: flex;
-    align-items: center;  /* logo ve yazıyı dikey ortala */
-    justify-content: center; /* yatayda ortala */
-    gap: 15px;             /* logo ile yazı arası boşluk */
-    font-size: 2.5rem;
+/* =====================
+   SOL TARAF – GÖRSEL
+===================== */
+.art3 {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
 }
 
-
-.logo{
-    width: 55px;
-    height: 60px;
-    border-radius: 60px;
+/* =====================
+   SAĞ TARAF – KART ALANI
+===================== */
+.container {
+  position: relative;
 }
 
-.subtitle{
-    font-size: large;
-    font-style: italic;
+.card {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 360px;
+  padding: 32px;
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  /* 🔴 EN ÖNEMLİ KISIM */
+  display: none;
 }
 
-.btn-login{
-    background-color:palevioletred;
-    color: #f5f5f5;
-    width: 152px;
-    border-radius: 7px;   /*border=cizgi*/
-    font-size: 25px;
-    border: 2px solid rgb(201, 69, 113);
-    padding: 5px;  /*ic bosluk , margin ise dıs bosluk*/
+/* 🔥 SADECE ACTIVE OLAN GÖRÜNÜR */
+.card.active {
+  display: block;
 }
 
-.btn-register{
-    background-color:rgb(112, 169, 216);
-    color: #f5f5f5;
-    width: 152px;
-    border-radius: 7px;
-    font-size: 25px;
-    border: 2px solid rgb(114, 112, 216);
-    padding: 5px;
+.card-title {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 45px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #6655fd;
+font-family: 'Oleo Script', cursive; }
+
+/* =====================
+   INPUTLAR
+===================== */
+.card input {
+  width: 100%;
+  height: 46px;
+  border-radius: 12px;
+  padding: 0 14px;
+  margin-bottom: 14px;
+
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  outline: none;
 }
 
-.btn-group{
-    display: flex;             
-    justify-content: center; 
-    gap: 30px;                 
-    margin-top: 20px;
+.card input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
+.card input:focus {
+  border-color: #5a6cff;
+  box-shadow: 0 0 0 3px rgba(90, 108, 255, 0.2);
+}
+
+/* =====================
+   BUTON
+===================== */
+.card button {
+  width: 100%;
+  height: 46px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+
+  background: #5a6cff;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.card button:hover {
+  opacity: 0.9;
+}
+
+/* =====================
+   SWITCH TEXT
+===================== */
+.switch-text {
+  margin-top: 16px;
+  font-size: 14px;
+  color: rgba(7, 7, 7, 0.75);
+  text-align: center;
+}
+
+.switch-text span {
+  color: #5a6cff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.switch-text span:hover {
+  text-decoration: underline;
+}
+
+/* =====================
+   MOBİL UYUMLULUK
+===================== */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .art3 {
+    width: 100%;
+    height: 40vh;
+  }
+
+  .card {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    margin: -80px auto 0;
+  }
+}

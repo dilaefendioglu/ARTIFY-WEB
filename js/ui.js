@@ -7,74 +7,81 @@ import { renderImages } from "./render.js";
 import { signOut } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 
 
+//önce divleri bulalım
+const loginCard = document.getElementById("loginCard");
+const registerCard = document.getElementById("registerCard");
+
+//simdi tıklanmaları bulalım
+const goRegister = document.getElementById("goRegister");
+const goLogin = document.getElementById("goLogin");
+
 // REGISTER BUTONU
 const registerBtn = document.getElementById("registerBtn");
 
 if (registerBtn) {
-  registerBtn.addEventListener("click", () => {
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+  registerBtn.addEventListener("click", async () => {
+    const name = document.getElementById("registerName").value;
+    const email = document.getElementById("registerEmail").value;
+    const password = document.getElementById("registerPassword").value;
 
-    register(email, password)
-      .then(() => {
-        // Kullanıcı profilini güncelle (ad soyad)
-        updateProfile(auth.currentUser, {
-          displayName: name,
-        });
+  try{
+    await register(email ,password);
+    await updateProfile(auth.currentUser, {displayName : name});
+    alert("Kayıt başarılı");
 
-        alert("Kayıt başarılı!");
-        window.location.href = "login.html";
-      })
-      .catch((err) => alert(err.message));
-  });
+        registerCard.classList.remove("active");
+        loginCard.classList.add("active");
+} catch (err) {
+        alert(err.message);
+      }
+    });
 }
+
 
 // LOGIN BUTONU
 const loginBtn = document.getElementById("loginBtn");
 
 if (loginBtn) {
-  loginBtn.addEventListener("click", () => {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+  loginBtn.addEventListener("click", async () => {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
 
-    login(email, password)
-      .then(() => {
-        alert("Giriş başarılı!");
-        window.location.href = "dashboard.html"; // başarılı giriş sonrası ana sayfa
-      })
-      .catch((err) => {
-        if (err.code === "auth/invalid-credential") {
-          alert("Email veya şifre hatalı.");
-        } else {
-          alert(err.message);
-        }
-      });
-  });
+  try{
+    await login(email,password);
+    window.location.href =  "dashboard.html";
+  } catch(err) {
+    alert("Email veya şifre hatalı");
+}
+});
+  
+} 
+
+//Kart Geçişleri
+if(goRegister && goLogin)
+{
+  goRegister.addEventListener("click" ,() =>{
+  registerCard.classList.add("active")
+  loginCard.classList.remove("active")
+  })
+
+  goLogin.addEventListener("click" ,() =>{
+    loginCard.classList.add("active")
+    registerCard.classList.remove("active")
+  })
 }
 
-//SEARCH BUTONU
+
+// ===== SEARCH (DASHBOARD) =====
 const searchInput = document.getElementById("searchInput");
 
-searchInput.addEventListener("keydown", async (event) => {
-  if (event.key === "Enter") {
-    const query = searchInput.value.trim();
-    if (!query) return;
-  
-    const images = await fetchImages(query);
-    renderImages(images);
-  }
-});
+if (searchInput) {
+  searchInput.addEventListener("keydown", async (event) => {
+    if (event.key === "Enter") {
+      const query = searchInput.value.trim();
+      if (!query) return;
 
-//çıkış butonu
-const logoutBtn = document.getElementById("logoutBtn");
-
-logoutBtn.addEventListener("click", () => {
-  signOut(auth)
-    .then(() => {
-      window.location.href = "../login.html";
-    })
-    .catch((error) => {
-      console.error("Logout error:", error);
-    });
-});
+      const images = await fetchImages(query);
+      renderImages(images);
+    }
+  });
+}
