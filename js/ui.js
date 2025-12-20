@@ -80,8 +80,20 @@ if (searchInput) {
       const query = searchInput.value.trim();
       if (!query) return;
 
+          sessionStorage.setItem("lastSearch", query); //aramayı saklıyoruz.
+
       const images = await fetchImages(query);
       renderImages(images);
     }
+  });
+}
+ // 🔁 Sayfa açılınca son aramayı tekrar yükle
+const lastSearch = sessionStorage.getItem("lastSearch");
+
+if (lastSearch) {
+  searchInput.value = lastSearch;
+
+  fetchImages(lastSearch).then(images => {
+    renderImages(images);
   });
 }

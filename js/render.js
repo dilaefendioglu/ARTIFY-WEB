@@ -6,7 +6,23 @@ export function renderImages(images) {  // dışarıdan gelen görsel listesini 
 
    const imageElement = document.createElement("img");
   imageElement.src = img.webformatURL; // resmi göster
-   imageElement.alt = img.tags;       // resmin açıklaması
+  imageElement.style.display = "none";
+
+imageElement.onload = () => {
+  imageElement.style.display = "block";
+};
+
+imageElement.onerror = () => {
+  imageElement.remove(); // bozuk resim hiç görünmesin
+};
+
+imageElement.addEventListener("click", () => {
+      window.location.href = `detail.html?img=${encodeURIComponent(imageElement.src)}`;
+  
+
+});
+
+
    container.appendChild(imageElement); //Oluşturduğu <img>’yi HTML’e ekler → EKRANDA GÖRÜNÜR.
 
   });
