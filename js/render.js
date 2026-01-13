@@ -1,3 +1,5 @@
+import { openDetail } from "./dashboard.js";
+
 export function renderImages(images) {  // dışarıdan gelen görsel listesini ekrana basmak için tanımlanır.
 
  const container = document.getElementById("imageContainer");
@@ -17,11 +19,9 @@ imageElement.onerror = () => {
 };
 
 imageElement.addEventListener("click", () => {
-      window.location.href = `detail.html?img=${encodeURIComponent(imageElement.src)}`;
-  
-
+  const imageUrl = img.largeImageURL || img.webformatURL;
+  openDetail(imageUrl);
 });
-
 
    container.appendChild(imageElement); //Oluşturduğu <img>’yi HTML’e ekler → EKRANDA GÖRÜNÜR.
 
