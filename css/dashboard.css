@@ -1,0 +1,99 @@
+/* ÜST SATIR */
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+}
+
+/* LOGO */
+.logo {
+  height: 60px;
+  width: 60px;
+}
+
+/* SEARCH – ORTAYI DOLDURSUN */
+.search-input {
+  height: 45px;
+  flex: 1;                 /* 🔥 ORTAYI KAPLAR */
+  max-width: 85vw;
+  border-radius: 512px;
+  padding: 0 20px;
+  background-color: white;
+}
+
+/* LOGOUT – EN SAĞ */
+.logoutBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;       /* 🔥 SAĞA YASLAR */
+}
+
+.logout-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* MASONRY ORTALI */
+.masonry {
+  column-count: 4; /*sayfayi 4 sutuna bolduk*/
+  column-gap: 15px;
+  padding: 20px;
+}
+
+.masonry img {
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  break-inside: avoid;
+  transition: transform 0.3s ease;
+}
+
+.masonry img:hover {
+  transform: scale(1.03);
+}
+
+/* Modalın dış çerçevesi (Ekranı kaplayan siyah şeffaf katman) */
+#detailModal {
+  position: fixed;      /* Sayfayı kaydırsan da sabit kalır */
+  top: 0;
+  left: 0;
+  width: 100vw;         /* Tüm ekran genişliği */
+  height: 100vh;        /* Tüm ekran yüksekliği */
+  background-color: rgba(0, 0, 0, 0.85); /* Arkayı karartma */
+  display: flex;        /* İçindekileri ortalamak için */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;        /* Her şeyin en üstünde görünsün */
+  backdrop-filter: blur(5px); /* Arkayı bulanıklaştırma (İsteğe bağlı) */
+}
+
+/* Modal içindeki resim */
+#detailImage {
+  max-width: 90%;       /* Ekrandan taşmasın */
+  max-height: 80vh;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  object-fit: contain;
+}
+
+/* Kapatma butonu */
+.close-buton {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: white;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: black;
+}
+
+/* Modal kapalıyken gizlemek için */
+.hidden {
+  display: none !important;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTIFY | Giriş</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+  <video class="art3" autoplay muted loop playsinline>
+  <source src="../videos/video.MP4" type="video/mp4">
+</video>
+
+<div class="card active" id="loginCard">
+  <h2 class="card-title">ARTIFY</h2>
+  <input type="email" id="loginEmail" placeholder="Kullanıcı adı"> 
+  <input type="password" id="loginPassword" placeholder="Şifre"> <br><br>
+  <button id="loginBtn">Giriş yap</button>
+  <p class="switch-text"> Hesabın yok mu? <span id="goRegister">Kaydol</span></p>
+</div>
+
+
+<div class="card" id="registerCard">
+    <h2 class="card-title">ARTIFY</h2>
+  <input type="text" id="registerName" placeholder="Ad soyad"> <br>
+  <input type="email" id="registerEmail" placeholder="E-posta"> <br>
+  <input type="password" id="registerPassword" placeholder="Şifre"> <br><br>
+  <button id="registerBtn">Kayıt ol</button>
+  <p class="switch-text">Hesabın zaten var mı? <span id="goLogin">Giriş yap</span></p>
+</div>
+
+ </div>
+
+ <script type="module" src="../js/firebase.js"></script>
+   <script type="module" src="../js/auth.js"></script>
+   <script type="module" src="../js/ui.js"></script>
+
+</body>
+
+</html>
