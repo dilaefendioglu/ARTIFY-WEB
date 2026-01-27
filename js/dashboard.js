@@ -21,6 +21,8 @@ if (searchInput) {
 const detailModal = document.getElementById("detailModal");
 const detailImage = document.getElementById("detailImage");
 const closeBtn = document.getElementById("closeBtn");
+const favBtn = document.getElementById("favBtn");
+const downloadBtn = document.getElementById("downloadBtn");
 
 export function openDetail(imageUrl)  {
   detailImage.src = imageUrl;
@@ -37,9 +39,23 @@ export function openDetail(imageUrl)  {
   });
  } 
 
- const favBtn = document.getElementById("favBtn");
- if (favBtn) {
-  favBtn.addEventListener("click" ,() => {
+  if(faVBtn){
+    favBtn.addEventListener("click" , () => {
+
+    })
+  }
+
+  if(downloadBtn){
+    downloadBtn.addEventListener("click" ,() =>{
+      
+    } )
+  }
+
+
+ const gofavBtn = document.getElementById("gofavBtn");
+ if (gofavBtn) {
+  gofavBtn.addEventListener("click" ,() => {
     window.location.href = "favorites.html"
   } )
  }
+

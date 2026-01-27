@@ -27,12 +27,12 @@
   object-fit: contain;
 }
 
-.fav-icon {
+.full_fav-icon {
   width: 30px;
   height: 30px;
 }
 
-.fav-btn {
+.gofav-btn {
   background: none;
   border: none;
   cursor: pointer;
@@ -78,7 +78,7 @@
 }
 
 .masonry {
-  column-count: 4; /sayfayi 4 sutuna bolduk/
+  column-count: 4; 
   column-gap: 15px;
   padding: 20px;
 }
@@ -130,6 +130,11 @@
   border-radius: 50%;
   cursor: pointer;
   color: black;
+}
+
+.empty_fav-icon{
+  
+
 }
 
 /* Modal kapalıyken gizlemek için */
