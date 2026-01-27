@@ -9,20 +9,29 @@
 </head>
 <body>
   
-<div class="top-bar">
+ <aside class="sidebar">
   <img class="logo" src="../image/logo (2).png" alt="logo">
 
-  <input
-    type="text"
-    id="searchInput"
-    class="search-input"
-    placeholder="Search art.."
-  >
+  <button id="favBtn" class="fav-btn" title="favorites"> <img src="../image/full_fav.png" class="fav-icon"></button>
 
-  <button class="logoutBtn" id="logoutBtn" title="logout">
-    <img src="../image/logout (5).png" class="logout-icon">
-  </button>
-</div>
+    <div class="sidebar-divider"></div>
+ </aside> 
+
+
+  <main class="main-content">
+    <div class="top-bar">
+      <input
+      type="text"
+      id="searchInput"
+      class="search-input"
+      placeholder="Search art.."
+    >
+
+    <button class="logoutBtn" id="logoutBtn" title="logout">
+      <img src="../image/logout (5).png" class="logout-icon">
+    </button>
+   </div>
+
 
 <div id="imageContainer" class="masonry"></div>
 
@@ -31,11 +40,11 @@
    <button id="closeBtn" class="close-buton">X</button>
   </div>
 
-<script type="module" src="/js/api.js"></script>
-<script type="module" src="/js/render.js"></script>
-<script type="module" src="/js/dashboard.js"></script>
-<script type="module" src="/js/ui.js"></script>
-<script type="module" src="/js/logout.js"></script>
+<script type="module" src="../js/api.js"></script>
+<script type="module" src="../js/render.js"></script>
+<script type="module" src="../js/dashboard.js"></script>
+<script type="module" src="../js/ui.js"></script>
+<script type="module" src="../js/logout.js"></script>
 
 </body>
 

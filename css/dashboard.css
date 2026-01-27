@@ -1,43 +1,84 @@
-/* ÜST SATIR */
+/* Sayfa Düzeni */
+.app-layout {
+  display: flex;
+  width: 100%;
+}
+
+/* SOL SİDEBAR (Çizgili Kısım) */
+.sidebar {
+  width: 80px; /* Genişliği sabitledik */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  background-color: white;
+  border-right: 1px solid #e0d9d9; /* Dikey çizgi */
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+/* İkon Boyutlarını Sabitleme (Saçma büyümeleri engeller) */
+.sidebar .logo {
+  width: 60px; 
+  height: 60px;
+  margin-bottom: 20px;
+  object-fit: contain;
+}
+
+.fav-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.fav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* SAĞ İÇERİK */
+.main-content {
+  margin-left: 80px; /* Sidebar'ın genişliği kadar boşluk */
+  flex: 1;
+}
+
 .top-bar {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 10px;
+  padding: 15px 30px;
+  gap: 20px;
 }
 
-/* LOGO */
-.logo {
-  height: 60px;
-  width: 60px;
-}
-
-/* SEARCH – ORTAYI DOLDURSUN */
 .search-input {
+  flex: 1; /* Arama çubuğu aradaki boşluğu doldurur */
   height: 45px;
-  flex: 1;                 /* 🔥 ORTAYI KAPLAR */
-  max-width: 85vw;
-  border-radius: 512px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
   padding: 0 20px;
-  background-color: white;
+  background-color: #ddd;
 }
 
-/* LOGOUT – EN SAĞ */
+.logout-icon {
+  width: 45px;
+  height: 45px;
+}
+
 .logoutBtn {
   background: none;
   border: none;
   cursor: pointer;
-  margin-left: auto;       /* 🔥 SAĞA YASLAR */
 }
 
-.logout-icon {
-  width: 40px;
-  height: 40px;
-}
-
-/* MASONRY ORTALI */
+/* Masonry yapısı */
 .masonry {
-  column-count: 4; /*sayfayi 4 sutuna bolduk*/
+  padding: 20px;
+  column-count: 4;
+}
+
+.masonry {
+  column-count: 4; /sayfayi 4 sutuna bolduk/
   column-gap: 15px;
   padding: 20px;
 }
@@ -56,29 +97,27 @@
 
 /* Modalın dış çerçevesi (Ekranı kaplayan siyah şeffaf katman) */
 #detailModal {
-  position: fixed;      /* Sayfayı kaydırsan da sabit kalır */
+  position: fixed;     
   top: 0;
   left: 0;
-  width: 100vw;         /* Tüm ekran genişliği */
-  height: 100vh;        /* Tüm ekran yüksekliği */
-  background-color: rgba(0, 0, 0, 0.85); /* Arkayı karartma */
-  display: flex;        /* İçindekileri ortalamak için */
+  width: 100vw;         
+  height: 100vh;       
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;        
   justify-content: center;
   align-items: center;
-  z-index: 9999;        /* Her şeyin en üstünde görünsün */
-  backdrop-filter: blur(5px); /* Arkayı bulanıklaştırma (İsteğe bağlı) */
+  z-index: 9999;       
+  backdrop-filter: blur(5px); 
 }
 
-/* Modal içindeki resim */
 #detailImage {
-  max-width: 90%;       /* Ekrandan taşmasın */
+  max-width: 90%;      
   max-height: 80vh;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   object-fit: contain;
 }
 
-/* Kapatma butonu */
 .close-buton {
   position: absolute;
   top: 20px;
