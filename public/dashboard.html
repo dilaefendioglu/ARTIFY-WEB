@@ -37,10 +37,15 @@
 
  <div id="detailModal" class="hidden">
    <img id="detailImage" alt="art detail">
-   <button id="closeBtn" class="close-buton">X</button>
-   <button id="favBtn" class="fav-btn" title="add to favorites"> <img src="../image/empty_fav.png" class="empty_fav-icon" alt="add to favorites"></button>
-   <button id="downloadBtn" class="download-btn" title="download"> <img src="../image/download.png" class="download-icon" alt="download"></button>
-  </div>
+
+    <div class="modal-actions">
+      <button id="favBtn" class="action-btn" title="add to favorites"> <img src="../image/empty_fav.png" class="btn-icon" alt="add to favorites"></button>
+      <button id="downloadBtn" class="action-btn" title="download"> <img src="../image/download.png" class="btn-icon" alt="download"></button>
+      <button id="closeBtn" class="close-buton" title="close">X</button>
+    </div>
+
+</div>
+ 
 
 <script type="module" src="../js/api.js"></script>
 <script type="module" src="../js/render.js"></script>

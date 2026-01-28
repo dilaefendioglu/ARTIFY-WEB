@@ -20,16 +20,17 @@ if (searchInput) {
 
 const detailModal = document.getElementById("detailModal");
 const detailImage = document.getElementById("detailImage");
-const closeBtn = document.getElementById("closeBtn");
-const favBtn = document.getElementById("favBtn");
-const downloadBtn = document.getElementById("downloadBtn");
 
 export function openDetail(imageUrl)  {
   detailImage.src = imageUrl;
   detailModal.classList.remove("hidden");
   document.body.style.overflow = "hidden";
  }
-  
+
+  const closeBtn = document.getElementById("closeBtn");
+  const favBtn = document.getElementById("favBtn");
+  const downloadBtn = document.getElementById("downloadBtn");
+
  if(closeBtn){
   closeBtn.addEventListener("click" , () =>{
    detailModal.classList.add("hidden");
@@ -39,18 +40,37 @@ export function openDetail(imageUrl)  {
   });
  } 
 
-  if(faVBtn){
-    favBtn.addEventListener("click" , () => {
+if (downloadBtn) {
+  downloadBtn.addEventListener("click", async () => {
+    const imageUrl = detailImage.src;
 
-    })
-  }
+    if (!imageUrl) return;
 
-  if(downloadBtn){
-    downloadBtn.addEventListener("click" ,() =>{
-      
-    } )
-  }
+    try {
+      // Görseli fetch ile çek (Blob olarak)
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
 
+      //  Blob için bir URL oluştur
+      const url = window.URL.createObjectURL(blob);
+
+      // 3. İndirme işlemini tetikle
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "artify-art.jpg";
+      document.body.appendChild(link);
+      link.click();
+
+      // 4. Belleği temizle
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("İndirme hatası:", error);
+      // Hata olursa en azından yeni sekmede açmayı dene
+      window.open(imageUrl, "_blank");
+    }
+  });
+}
 
  const gofavBtn = document.getElementById("gofavBtn");
  if (gofavBtn) {

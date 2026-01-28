@@ -118,24 +118,56 @@
   object-fit: contain;
 }
 
-.close-buton {
+/* Butonları Sağ Üstte Toplayan Grup */
+.modal-actions {
   position: absolute;
   top: 20px;
   right: 30px;
+  display: flex;
+  flex-direction: row; /* Yan yana dizilmeleri için */
+  align-items: center;
+  gap: 12px; /* Butonlar arası boşluk */
+  z-index: 10000;
+}
+
+/* Buton Grubu Konumu */
+.modal-actions {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10000;
+}
+
+/* Ortak Buton Tasarımı */
+.action-btn, .close-buton {
   background: white;
   border: none;
-  font-size: 24px;
-  font-weight: bold;
-  padding: 10px 15px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   cursor: pointer;
-  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
 }
 
-.empty_fav-icon{
-  
-
+/* İkon Boyutları (Burayı HTML ile eşitledik) */
+.btn-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
+
+.action-btn:hover, .close-buton:hover {
+  transform: scale(1.1);
+  background-color: #f8f8f8;
+}
+
 
 /* Modal kapalıyken gizlemek için */
 .hidden {
