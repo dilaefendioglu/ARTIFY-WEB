@@ -72,10 +72,29 @@ if (downloadBtn) {
   });
 }
 
+  const EMPTY_HEART = "../image/empty_fav.png";
+  const FULL_HEART = "../image/full_fav.png";
+
+  const favIcon = favBtn.querySelector("img");
+  const currentSrc = favIcon.getAttribute("src");
+  const currentImageUrl = detailImage.src; // O an açık olan res
+
+  
+
+
+
+
+
+
+
+
+
  const gofavBtn = document.getElementById("gofavBtn");
  if (gofavBtn) {
   gofavBtn.addEventListener("click" ,() => {
     window.location.href = "favorites.html"
   } )
  }
+
+
 
