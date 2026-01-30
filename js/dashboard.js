@@ -2,7 +2,16 @@ import { fetchImages } from "./api.js";
 import { renderImages } from "./render.js";
 
 
-const searchInput = document.getElementById("searchInput");
+  const searchInput = document.getElementById("searchInput");
+  const detailModal = document.getElementById("detailModal");
+  const detailImage = document.getElementById("detailImage");
+  const closeBtn = document.getElementById("closeBtn");
+  const downloadBtn = document.getElementById("downloadBtn");
+  const favBtn = document.getElementById("favBtn");
+  const EMPTY_HEART = "../image/empty_fav.png";
+  const FULL_HEART = "../image/full_fav.png"; 
+  const gofavBtn = document.getElementById("gofavBtn");
+
 
 if (searchInput) {
   searchInput.addEventListener("keydown", async (event) => {
@@ -18,18 +27,22 @@ if (searchInput) {
   });
 }
 
-const detailModal = document.getElementById("detailModal");
-const detailImage = document.getElementById("detailImage");
-
 export function openDetail(imageUrl)  {
   detailImage.src = imageUrl;
+ // Modal açıldığında kalbin durumunu kontrol et
+  const favs = JSON.parse(localStorage.getItem("artify_favs")) || [];
+  const favIcon = favBtn.querySelector("img");
+  
+  if (favs.includes(imageUrl)) {
+    favIcon.src = FULL_HEART;
+  } else {
+    favIcon.src = EMPTY_HEART;
+  }
+
   detailModal.classList.remove("hidden");
   document.body.style.overflow = "hidden";
  }
 
-  const closeBtn = document.getElementById("closeBtn");
-  const favBtn = document.getElementById("favBtn");
-  const downloadBtn = document.getElementById("downloadBtn");
 
  if(closeBtn){
   closeBtn.addEventListener("click" , () =>{
@@ -39,6 +52,7 @@ export function openDetail(imageUrl)  {
   
   });
  } 
+
 
 if (downloadBtn) {
   downloadBtn.addEventListener("click", async () => {
@@ -72,24 +86,40 @@ if (downloadBtn) {
   });
 }
 
-  const EMPTY_HEART = "../image/empty_fav.png";
-  const FULL_HEART = "../image/full_fav.png";
 
-  const favIcon = favBtn.querySelector("img");
-  const currentSrc = favIcon.getAttribute("src");
-  const currentImageUrl = detailImage.src; // O an açık olan res
+  if(favBtn){
+    favBtn.addEventListener("click", () => {
+     const favIcon = favBtn.querySelector("img");    
+     const currentSrc = favIcon.getAttribute("src"); 
+  if(currentSrc.includes(EMPTY_HEART)) {
+    favIcon.src= FULL_HEART;
+   addToFavorites(detailImage.src);
+  console.log("Favorilere eklendi");
+  }
 
-  
+    else{
+      favIcon.src=EMPTY_HEART;
+    removeFromFavorites(detailImage.src);
+    console.log("Favorilerden çıkarıldı");
+    }
+    })
+  }
+
+ function addToFavorites(url) {
+  let favs = JSON.parse(localStorage.getItem("artify_favs")) || [];
+  if (!favs.includes(url)) {
+    favs.push(url);
+    localStorage.setItem("artify_favs", JSON.stringify(favs));
+  }
+}
+
+function removeFromFavorites(url) {
+  let favs = JSON.parse(localStorage.getItem("artify_favs")) || [];
+  favs = favs.filter(item => item !== url);
+  localStorage.setItem("artify_favs", JSON.stringify(favs));
+}
 
 
-
-
-
-
-
-
-
- const gofavBtn = document.getElementById("gofavBtn");
  if (gofavBtn) {
   gofavBtn.addEventListener("click" ,() => {
     window.location.href = "favorites.html"
